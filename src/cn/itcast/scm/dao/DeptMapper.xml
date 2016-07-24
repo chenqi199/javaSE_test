@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.itcast.scm.dao.DeptDao">
+	<resultMap type="Dept" id="deptResultMap">
+		<id property="deptId" column="dept_id" />
+		<result property="deptName" column="dept_name" />
+		<result property="deptAddress" column="dept_address" />
+	</resultMap>
+	<!-- id和命名空间用来定位SQL语句，parameterType表示参数的类型，resultMap返回类型 -->
+	<select id="selectDept" parameterType="Integer" resultMap="deptResultMap">
+		<!--参数的写法#{deptID} -->
+		select dept_id,dept_name,dept_address from dept where dept_id=#{deptID}
+	</select>
+
+	<insert id="insertDept" parameterType="Dept">
+		insert into dept(dept_name,dept_address) values(#{deptName},#{deptAddress});
+	</insert>
+
+</mapper>
