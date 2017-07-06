@@ -1,0 +1,58 @@
+参考：http://docs.oracle.com/javase/6/docs/technotes/guides/security/StandardNames.html#SecretKeyFactory
+参考：https://www.ibm.com/developerworks/cn/java/l-security/
+
+算法名称在实例化各个类的时候的可以使用的标准算法名称
+
+SecretKeyFactory
+
+AES
+ARCFOUR
+DES
+DESede ：就是3DES
+PBEWithAnd：例如PBEWithMD5AndDES
+PBEWithAnd：例如PBEwithSHA1AndDESede
+PBKDF2WithHmacSHA1
+Cipher 实例化的时候可以使用的标准转换名称,标准转换名称不仅仅包含标准算法名称，还有mode和填充语义约束
+If no mode or padding is specified, provider-specific default values for the mode and padding scheme are used. For example, the SunJCE provider uses ECB as the default mode, and PKCS5Padding as the default padding scheme for DES, DES-EDE and Blowfish ciphers.
+上面的介绍说明了如果没有mode和padding的设置，那么，对于DES, DES-EDE and Blowfish这种默认的是ECB+PKCS5Padding
+示例：
+"algorithm/mode/padding" ：AES/CBC/PKCS5Padding
+"algorithm"
+支持的算法名称
+
+AES
+AESWrap
+ARCFOUR
+Blowfish
+DES
+DESede :就是3des算法
+DESedeWrap
+ECIES
+PBEWithAnd
+PBEWithMD5AndDES:
+PBEwithSHA1AndDESede:
+RC2 ：下面几个都是rsa相关的
+RC4
+RC5
+RSA
+支持的mode模式
+
+NONE
+CBC
+CFB,CFBX
+CTR
+CTS
+ECB
+OFB,OFBX
+PCBC
+支持的padding模式
+
+NoPadding
+ISO10126Padding
+OAEPPadding, :不支持
+PKCS1Padding ：貌似不支持了
+PKCS5Padding
+SSL3Padding：不支持
+但是实验表明好像并不是都支持
+
+ SecretKeyFactory中支持的算法
