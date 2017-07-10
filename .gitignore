@@ -29,3 +29,4 @@ target/
 Thumbs.db
 !/tansunjsondome/src/main/webapp/WEB-INF/lib/qiniu.jar
 
+test/
