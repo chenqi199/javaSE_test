@@ -11,7 +11,8 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.PriorityBlockingQueue;
 
 /**
- * Created by Administrator on 2017/7/8 0008.
+ * Created by 陈奇 on 2017/7/8 0008.
+ * 这是一个队列的demo，演示队列先进先出的特性
  */
 public class QueueBehavior {
     private static int count =10;
