@@ -9,10 +9,11 @@ package com.cn.readThinkingInJava.TwentyOne;
 public class MainThread {
     public static void main(String[] args) {
 
+         LiftOff liftOff = new LiftOff();
+         liftOff.run();//这个run方法被当做普通方法调用、main线程驱动
+
         for (int i = 0 ;i<5;i++){
-
-            new Thread(new LiftOff()).start();
-
+            new Thread(new LiftOff()).start();//产生单独的线程实
         }
     }
 }
