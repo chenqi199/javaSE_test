@@ -12,6 +12,6 @@ public class BassicThread  {
         Thread t = new Thread(new LiftOff());
 
         t.start();
-        System.out.println("Waiting for LifftOff");
+        System.out.println("Waiting for LifftOff");//因为liftOff.run()是由不同的线程执行的，主线程会继续向下执行其他操作，cpu频繁切换，看上去好像是同时执行的
     }
 }
