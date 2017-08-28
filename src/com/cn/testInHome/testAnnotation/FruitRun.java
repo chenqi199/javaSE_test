@@ -16,7 +16,7 @@ import java.lang.reflect.Field;
 
 class Apple {
 
-    @FruitName("Apple")
+    @FruitName("Orange")
     private String appleName;
 
     @FruitColor(fruitColor= FruitColor.Color.RED)
@@ -75,7 +75,7 @@ class FruitInfoUtil {
             }
             else if(field.isAnnotationPresent(FruitProvider.class)){
                 FruitProvider fruitProvider= (FruitProvider) field.getAnnotation(FruitProvider.class);
-                strFruitProvicer=" 供应商编号："+fruitProvider.id()+" 供应商名称："+fruitProvider.name()+" 供应商地址："+fruitProvider.address();
+                strFruitProvicer+=" 供应商编号："+fruitProvider.id()+"\n\r 供应商名称："+fruitProvider.name()+" 供应商地址："+fruitProvider.address();
                 System.out.println(strFruitProvicer);
             }
         }
