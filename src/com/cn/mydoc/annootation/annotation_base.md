@@ -99,7 +99,7 @@ class Apple extends Fruit {
 **下面一段程序中使用了@Deprecated注解标示方法过期，同时在方法注释中用@deprecated tag 标示该方法已经过时，代码如下：**
 
 
-```
+```java
 class AppleService {
     public void displayName(){
         System.out.println("水果的名字是：苹果");
