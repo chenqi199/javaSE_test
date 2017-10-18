@@ -15,7 +15,7 @@ public class GoodGril {
         int age = annotation.age();
         String name = annotation.name();
         boolean love = annotation.love();
-        System.out.println("girl name is "+name+"\n"+"age is "+age+"\n she is my love "+love);
+        System.out.println("girl name is "+name+"\n"+" age is "+age+"\n she is my love "+love);
 
     }
 }
