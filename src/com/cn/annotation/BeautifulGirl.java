@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ButefulGril {
+public @interface BeautifulGirl {
     public enum HowButeful{BUTEFUL,CLEARVER,DURTY}
     public String name() default "xiaoxiaomi";
     public int age() default 24;
