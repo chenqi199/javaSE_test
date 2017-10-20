@@ -1,0 +1,3 @@
+java 内省学习
+>通过类Introspector的getBeanInfo()方法获取某个对象的BeanInfo信息，然后通过BeanInfo来获取属性的描述器(PropertyDescriptor),通过这个属性描述器就可以获取某个属性对应的 getter/setter方法,然后我们就可以通过反射机制来调用这些方法.
+我们又通常把javabean的实例对象称之为值对象（Value Object），因为这些bean中通常只有一些信息字段和存储方法，没有功能性方法，JavaBean实际就是一种规范，当一个类满足这个规范，这个类就能被其它特定的类调用。一个类被当作javaBean使用时,JavaBean的属性是根据方法名推断出来的，它根本看不到java类内部的成员变量，通过去掉set/get方法前缀 **如果get/set方法去掉前缀不一致会推导出两个成员变量**，然后取剩余部分，如果剩余部分的第二个字母是小写的，则把剩余部分的首字母改成小写。
