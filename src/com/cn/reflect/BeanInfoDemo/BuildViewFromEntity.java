@@ -3,7 +3,9 @@ package com.cn.reflect.BeanInfoDemo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
 /**
@@ -15,7 +17,7 @@ import java.util.Arrays;
  */
 public class BuildViewFromEntity {
 
-    public static void main(String[] args) throws IllegalAccessException, IntrospectionException, InvocationTargetException, InstantiationException {
+    public static void main(String[] args) throws Exception {
 
         Girl girl = new Girl();
         girl.setName("111111111111111111111");
@@ -23,7 +25,8 @@ public class BuildViewFromEntity {
         girl.setCtime(System.currentTimeMillis());
         girl.setUtime(System.currentTimeMillis() + 22323333);
         NewGirl newGirl = new NewGirl();
-        voUtils(girl, newGirl);
+//        voUtils(girl, newGirl);
+        copy(newGirl,girl);
         System.out.println(newGirl);
     }
 
@@ -44,21 +47,38 @@ public class BuildViewFromEntity {
                     if (value != null) {
                         System.out.println(value);
                         Object finalValue = value;
+                        Arrays.stream(ps).filter(p -> p.getName().equals(pd.getName())).forEach(p -> {
+                            try {
+                                p.getWriteMethod().invoke(voObj, finalValue);
+                            } catch (IllegalAccessException | InvocationTargetException e) {
+                                e.printStackTrace();
+                            }
+                        });
 
-                        Arrays.stream(ps)
-                                .filter(p -> p.getName().equals(pd.getName()))
-                                .forEach(p -> {
-                                    try {
-                                        p.getWriteMethod().invoke(voObj, finalValue);
-                                    } catch (IllegalAccessException | InvocationTargetException e) {
-                                        e.printStackTrace();
-                                    }
-                                });
                     }
 
                 });
 
 
+    }
+
+    public static void copy(Object target, Object source) throws Exception {
+        Class<?> clazz = source.getClass();
+        while (clazz != null) {
+            Field[] sourceFields = clazz.getDeclaredFields();
+            for (Field sourceField : sourceFields) {
+                boolean isStatic = Modifier
+                        .isStatic(sourceField.getModifiers());
+                boolean isFinal = Modifier.isFinal(sourceField.getModifiers());
+                if (!(isStatic && isFinal)) {
+                    sourceField.setAccessible(true);
+                    Object sourceValue = sourceField.get(source);
+                    System.out.println(sourceValue);
+                    sourceField.set(target, sourceValue);
+                }
+            }
+            clazz = clazz.getSuperclass();
+        }
     }
 
 }
