@@ -21,7 +21,7 @@ public class GrilBeanInfo {
     public static void main(String[] args) throws IntrospectionException {
         PropertyDescriptor[] propertyDescriptors = Introspector.getBeanInfo(Girl.class).getPropertyDescriptors();
         Arrays.stream(propertyDescriptors).forEach(p ->{
-            System.out.println(p.getName());
+            System.out.println (p.getName());
             String fieldName = p.getName();
             if(!"class".equals(fieldName)){
                 try {
