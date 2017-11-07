@@ -21,8 +21,8 @@ public class Cglibdemo {
         ConcreteClassNoInterface ccni=(ConcreteClassNoInterface)enhancer.create();
         ccni.getConcreteMethodA("shensy");
 
-        ccni.getConcreteMethodB(0);
-        ccni.getConcreteMethodB(20);
+//        ccni.getConcreteMethodB(0);
+//        ccni.getConcreteMethodB(20);
     }
 
 }
@@ -47,6 +47,7 @@ class ConcreteClassNoInterface {
 }
  class ConcreteClassInterceptor implements MethodInterceptor {
 
+    @Override
     public Object intercept(Object obj, Method method, Object[] arg, MethodProxy proxy) throws Throwable {
 
         System.out.println("Before:"+method);

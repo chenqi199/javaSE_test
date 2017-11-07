@@ -9,34 +9,38 @@ import java.lang.reflect.Proxy;
  */
 public class ProxyModel {
     public static void main(String[] args) {
-        RealSubject realSubject=new RealSubject();
-        Class<?>cla=realSubject.getClass();
-        InvocationHandler handler=new ProxySubject(realSubject);
-        Subject subject=(Subject) Proxy.newProxyInstance(cla.getClassLoader(), cla.getInterfaces(), handler);
+        RealSubject realSubject = new RealSubject();
+        Class<?> cla = realSubject.getClass();
+        InvocationHandler handler = new ProxySubject(realSubject);
+        Subject subject = (Subject) Proxy.newProxyInstance(cla.getClassLoader(), cla.getInterfaces(), handler);
         subject.request();
     }
 }
 
-interface Subject{
+interface Subject {
     abstract public void request();
 }
 
-class RealSubject implements Subject{
+class RealSubject implements Subject {
     public RealSubject() {
     }
+
     @Override
     public void request() {
         System.out.println("real subject");
     }
 }
 
-class ProxySubject implements InvocationHandler{
+class ProxySubject implements InvocationHandler {
     private Subject obj;
+
     public ProxySubject() {
     }
-    public ProxySubject(Subject obj){
-        this.obj=obj;
+
+    ProxySubject(Subject obj) {
+        this.obj = obj;
     }
+
     @Override
     public Object invoke(Object proxy, Method method, Object[] args)
             throws Throwable {
