@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="weixiao_update_school:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="weixiao_update_school-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="weixiao_update_school:war exploded" />
+    </root>
+  </artifact>
+</component>

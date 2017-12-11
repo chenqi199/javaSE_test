@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ddwx.cl.dao.SchoolInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.ddwx.cl.model.SchoolInfo" >
+    <id column="SCHOOL_ID" property="schoolId" jdbcType="BIGINT" />
+    <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="SCHOOL_LEADER" property="schoolLeader" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="PROVINCE" property="province" jdbcType="BIGINT" />
+    <result column="CITY" property="city" jdbcType="BIGINT" />
+    <result column="DISTRICT" property="district" jdbcType="BIGINT" />
+    <result column="VIEW_BALANCE" property="viewBalance" jdbcType="INTEGER" />
+    <result column="SCHOOL_TYPE" property="schoolType" jdbcType="TINYINT" />
+    <result column="ATTENDANCE_BALANCE" property="attendanceBalance" jdbcType="INTEGER" />
+    <result column="FUNCTION_SWITCH" property="functionSwitch" jdbcType="BIGINT" />
+    <result column="CTIME" property="ctime" jdbcType="BIGINT" />
+    <result column="UTIME" property="utime" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SCHOOL_ID, MOBILE, EMAIL, ADDRESS, SCHOOL_LEADER, REMARK, PROVINCE, CITY, DISTRICT, 
+    VIEW_BALANCE, ATTENDANCE_BALANCE, FUNCTION_SWITCH, CTIME, UTIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from school_info
+    where SCHOOL_ID = #{schoolId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from school_info
+    where SCHOOL_ID = #{schoolId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.ddwx.cl.model.SchoolInfo" >
+    insert into school_info (SCHOOL_ID, MOBILE, EMAIL, 
+      ADDRESS, SCHOOL_LEADER, REMARK, 
+      PROVINCE, CITY, DISTRICT, 
+      VIEW_BALANCE, ATTENDANCE_BALANCE, FUNCTION_SWITCH, 
+      CTIME, UTIME,SCHOOL_TYPE)
+    values (#{schoolId,jdbcType=BIGINT}, #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{schoolLeader,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{province,jdbcType=BIGINT}, #{city,jdbcType=BIGINT}, #{district,jdbcType=BIGINT}, 
+      #{viewBalance,jdbcType=INTEGER}, #{attendanceBalance,jdbcType=INTEGER}, #{functionSwitch,jdbcType=BIGINT}, 
+      #{ctime,jdbcType=BIGINT}, #{utime,jdbcType=BIGINT},#{schoolType,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ddwx.cl.model.SchoolInfo" >
+    insert into school_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="schoolId != null" >
+        SCHOOL_ID,
+      </if>
+      <if test="mobile != null" >
+        MOBILE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="schoolLeader != null" >
+        SCHOOL_LEADER,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="province != null" >
+        PROVINCE,
+      </if>
+      <if test="city != null" >
+        CITY,
+      </if>
+      <if test="district != null" >
+        DISTRICT,
+      </if>
+      <if test="viewBalance != null" >
+        VIEW_BALANCE,
+      </if>
+      <if test="attendanceBalance != null" >
+        ATTENDANCE_BALANCE,
+      </if>
+      <if test="functionSwitch != null" >
+        FUNCTION_SWITCH,
+      </if>
+      <if test="ctime != null" >
+        CTIME,
+      </if>
+      <if test="utime != null" >
+        UTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="schoolId != null" >
+        #{schoolId,jdbcType=BIGINT},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolLeader != null" >
+        #{schoolLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=BIGINT},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=BIGINT},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=BIGINT},
+      </if>
+      <if test="viewBalance != null" >
+        #{viewBalance,jdbcType=INTEGER},
+      </if>
+      <if test="attendanceBalance != null" >
+        #{attendanceBalance,jdbcType=INTEGER},
+      </if>
+      <if test="functionSwitch != null" >
+        #{functionSwitch,jdbcType=BIGINT},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=BIGINT},
+      </if>
+      <if test="utime != null" >
+        #{utime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ddwx.cl.model.SchoolInfo" >
+    update school_info
+    <set >
+      <if test="mobile != null" >
+        MOBILE = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="schoolLeader != null" >
+        SCHOOL_LEADER = #{schoolLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        PROVINCE = #{province,jdbcType=BIGINT},
+      </if>
+      <if test="city != null" >
+        CITY = #{city,jdbcType=BIGINT},
+      </if>
+      <if test="district != null" >
+        DISTRICT = #{district,jdbcType=BIGINT},
+      </if>
+      <if test="viewBalance != null" >
+        VIEW_BALANCE = #{viewBalance,jdbcType=INTEGER},
+      </if>
+      <if test="attendanceBalance != null" >
+        ATTENDANCE_BALANCE = #{attendanceBalance,jdbcType=INTEGER},
+      </if>
+      <if test="functionSwitch != null" >
+        FUNCTION_SWITCH = #{functionSwitch,jdbcType=BIGINT},
+      </if>
+      <if test="ctime != null" >
+        CTIME = #{ctime,jdbcType=BIGINT},
+      </if>
+      <if test="utime != null" >
+        UTIME = #{utime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where SCHOOL_ID = #{schoolId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ddwx.cl.model.SchoolInfo" >
+    update school_info
+    set MOBILE = #{mobile,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      SCHOOL_LEADER = #{schoolLeader,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=BIGINT},
+      CITY = #{city,jdbcType=BIGINT},
+      DISTRICT = #{district,jdbcType=BIGINT},
+      VIEW_BALANCE = #{viewBalance,jdbcType=INTEGER},
+      ATTENDANCE_BALANCE = #{attendanceBalance,jdbcType=INTEGER},
+      FUNCTION_SWITCH = #{functionSwitch,jdbcType=BIGINT},
+      CTIME = #{ctime,jdbcType=BIGINT},
+      UTIME = #{utime,jdbcType=BIGINT}
+    where SCHOOL_ID = #{schoolId,jdbcType=BIGINT}
+  </update>
+</mapper>
