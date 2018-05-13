@@ -1,6 +1,7 @@
 package com.cn.reflect.getGenericType;
 
 import java.lang.reflect.Type;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * 描述：
@@ -11,8 +12,11 @@ import java.lang.reflect.Type;
  */
 public class Test {
     public static void main(String[] args) {
-        Type genericSuperclass = PorsenDaoImp.class.getGenericSuperclass();
+//        Type genericSuperclass = PorsenDaoImp.class.getGenericSuperclass();
+//
+//        System.out.println(genericSuperclass);
 
-        System.out.println(genericSuperclass);
+        ConcurrentHashMap map = new ConcurrentHashMap(256);
+
     }
 }

@@ -7,5 +7,5 @@ package com.cn.reflect.getGenericType;
  * 2017/10/16 : 18:05.
  * @version : 1.0
  */
-public class Porsen {
+public class Porsen<String> {
 }
